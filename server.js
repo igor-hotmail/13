@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+require('dotenv').config()
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://vasilievi:fU6KaKuMHKPOSphl@cluster0.nd2az9g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+console.log(process.env.DB);
+mongoose.connect(process.env.DB);
 const Cat = mongoose.model('Cat', { name: String });
 
 app.use('/', express.static('public'));
